@@ -15,6 +15,7 @@
         <lobmok>1.18.34</lobmok>
         <jakarta.validation>3.1.0</jakarta.validation>
         <hibernate.core>6.5.2.Final</hibernate.core>
+        <spring.security.core>3.3.1</spring.security.core>
     </properties>
 
     <dependencies>
@@ -40,6 +41,12 @@
             <version>${hibernate.core}</version>
         </dependency>
 
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>${spring.security.core}</version>
+        </dependency>
 
     </dependencies>
 
