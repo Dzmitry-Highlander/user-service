@@ -17,6 +17,7 @@
         <hibernate.core>6.5.2.Final</hibernate.core>
         <spring.security.core>3.3.1</spring.security.core>
         <spring.boot.starter.data.jpa>3.3.1</spring.boot.starter.data.jpa>
+        <googlecode.libphonenumber>8.13.41</googlecode.libphonenumber>
     </properties>
 
     <dependencies>
@@ -54,6 +55,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${spring.boot.starter.data.jpa}</version>
+        </dependency>
+
+        <!-- Libphonenumber -->
+        <dependency>
+            <groupId>com.googlecode.libphonenumber</groupId>
+            <artifactId>libphonenumber</artifactId>
+            <version>${googlecode.libphonenumber}</version>
         </dependency>
 
     </dependencies>
