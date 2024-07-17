@@ -13,6 +13,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lobmok>1.18.34</lobmok>
+        <jakarta.validation>3.1.0</jakarta.validation>
     </properties>
 
     <dependencies>
@@ -22,6 +23,13 @@
             <artifactId>lombok</artifactId>
             <version>${lobmok}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- Jakarta Validation -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation}</version>
         </dependency>
 
     </dependencies>
