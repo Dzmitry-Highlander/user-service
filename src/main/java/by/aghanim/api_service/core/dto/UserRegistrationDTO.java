@@ -16,6 +16,9 @@ public class UserRegistrationDTO {
     @Size(min = 8, max = 15, message = "Mobile number length must be from 8 till 15 symbols")
     private String mobileNumber;
 
+    @NotEmpty(message = "Nickname can't be empty")
+    private String nickname;
+
     @NotEmpty(message = "Password can't be empty")
     @Size(min = 4, max = 20, message = "Password length must be from 4 till 20 symbols")
     private String password;
