@@ -4,13 +4,13 @@ import by.aghanim.api_service.core.dto.UserCreateDTO;
 import by.aghanim.api_service.dao.api.IUserRepository;
 import by.aghanim.api_service.dao.entity.User;
 import by.aghanim.api_service.service.api.IUserService;
-import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -18,18 +18,29 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class UserService implements IUserService {
+    private static final String USER_EXISTS_ERROR = "A user with this mobile number is already registered!";
+    private static final String USER_NOT_FOUND_ERROR = "A user with this mobile number was not found!";
+
     private final IUserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final ConversionService conversionService;
 
+    @Transactional(readOnly = true)
     @Override
     public User findByMobileNumber(String mobileNumber) {
-        return null;
+        return userRepository.findByMobileNumber(mobileNumber)
+                .orElseThrow(); //TODO new ItemNotFoundException(USER_NOT_FOUND_ERROR));
     }
 
+    @Transactional
     @Override
-    public void activate(UserCreateDTO userCreateDTO) {
+    public void activate(@Valid UserCreateDTO userCreateDTO) {
+        User user = userRepository.findByMobileNumber(userCreateDTO.getMobileNumber())
+                .orElseThrow(); //TODO new ItemNotFoundException(USER_NOT_FOUND_ERROR));
 
+        //TODO user.setStatus(EUserStatus.ACTIVATED); add enum EUserStatus and refactor User entity
+
+        userRepository.save(user);
     }
 
     @Transactional
@@ -37,21 +48,25 @@ public class UserService implements IUserService {
     public User create(UserCreateDTO item) {
         userRepository.findByMobileNumber(item.getMobileNumber())
                 .ifPresent(e -> {
-            //TODO throw new MobileNumberIsAlreadyTakenException("USER_EXISTS_ERROR);
+            //TODO throw new MobileNumberIsAlreadyTakenException(USER_EXISTS_ERROR);
         });
 
         item.setPassword(passwordEncoder.encode(item.getPassword()));
 
-        return userRepository.save(Objects.requireNonNull(conversionService.convert(item, User.class))); //TODO converter for User
+        return userRepository.save(Objects.requireNonNull(conversionService.convert(item, User.class)));
+        //TODO UserCreateDTOTOUserConverter
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<User> read() {
-        return List.of();
+        return userRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User read(UUID id) {
-        return null;
+        return userRepository.findById(id)
+                .orElseThrow(); //TODO new ItemNotFoundException(USER_NOT_FOUND_ERROR));
     }
 }
