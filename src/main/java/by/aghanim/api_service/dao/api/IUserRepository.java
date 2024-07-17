@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface IUserRepository extends ListCrudRepository<User, UUID> {
-    Optional<User> findByMobilePhone(String mobilePhone);
+    Optional<User> findByMobileNumber(String mobileNumber);
 }
