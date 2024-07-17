@@ -14,5 +14,5 @@ import java.util.UUID;
 public class UserDTO {
     private UUID id;
     private String nickname;
-    private String phoneNumber;
+    private String mobileNumber;
 }
