@@ -1,7 +1,7 @@
-package by.aghanim.api_service.service.api;
+package by.aghanim.user_service.service.api;
 
-import by.aghanim.api_service.core.dto.UserCreateDTO;
-import by.aghanim.api_service.dao.entity.User;
+import by.aghanim.user_service.core.dto.UserCreateDTO;
+import by.aghanim.user_service.dao.entity.User;
 
 public interface IUserService extends ICRUDService<User, UserCreateDTO> {
     User findByMobileNumber(String mobileNumber);

@@ -1,4 +1,4 @@
-package by.aghanim.api_service.core.dto;
+package by.aghanim.user_service.core.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;

@@ -1,4 +1,4 @@
-package by.aghanim.api_service.service.api;
+package by.aghanim.user_service.service.api;
 
 import java.util.List;
 import java.util.UUID;

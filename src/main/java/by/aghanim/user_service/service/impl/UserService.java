@@ -1,9 +1,9 @@
-package by.aghanim.api_service.service.impl;
+package by.aghanim.user_service.service.impl;
 
-import by.aghanim.api_service.core.dto.UserCreateDTO;
-import by.aghanim.api_service.dao.api.IUserRepository;
-import by.aghanim.api_service.dao.entity.User;
-import by.aghanim.api_service.service.api.IUserService;
+import by.aghanim.user_service.core.dto.UserCreateDTO;
+import by.aghanim.user_service.dao.api.IUserRepository;
+import by.aghanim.user_service.dao.entity.User;
+import by.aghanim.user_service.service.api.IUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;

@@ -1,6 +1,6 @@
-package by.aghanim.api_service.core.dto;
+package by.aghanim.user_service.core.dto;
 
-import by.aghanim.api_service.core.enums.EUserRole;
+import by.aghanim.user_service.core.enums.EUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +17,5 @@ public class UserDTO {
     private String nickname;
     private String mobileNumber;
     private EUserRole role;
+    //TODO EUserStatus
 }

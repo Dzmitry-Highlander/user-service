@@ -1,6 +1,6 @@
-package by.aghanim.api_service.dao.api;
+package by.aghanim.user_service.dao.api;
 
-import by.aghanim.api_service.dao.entity.User;
+import by.aghanim.user_service.dao.entity.User;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.Optional;

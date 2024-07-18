@@ -1,6 +1,6 @@
-package by.aghanim.api_service.dao.entity;
+package by.aghanim.user_service.dao.entity;
 
-import by.aghanim.api_service.core.enums.EUserRole;
+import by.aghanim.user_service.core.enums.EUserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,6 +1,6 @@
-package by.aghanim.api_service.core.dto;
+package by.aghanim.user_service.core.dto;
 
-import by.aghanim.api_service.core.enums.EUserRole;
+import by.aghanim.user_service.core.enums.EUserRole;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

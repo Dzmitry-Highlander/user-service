@@ -1,4 +1,4 @@
-package by.aghanim.api_service.core.enums;
+package by.aghanim.user_service.core.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
