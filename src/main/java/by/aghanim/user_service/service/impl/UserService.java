@@ -54,7 +54,6 @@ public class UserService implements IUserService {
         item.setPassword(passwordEncoder.encode(item.getPassword()));
 
         return userRepository.save(Objects.requireNonNull(conversionService.convert(item, User.class)));
-        //TODO UserCreateDTOTOUserConverter
     }
 
     @Transactional(readOnly = true)
