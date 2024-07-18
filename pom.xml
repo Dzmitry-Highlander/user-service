@@ -19,6 +19,7 @@
         <spring.boot.starter.data.jpa>3.3.1</spring.boot.starter.data.jpa>
         <spring.core>6.1.11</spring.core>
         <spring.transaction>6.1.11</spring.transaction>
+        <spring.starter.web>3.3.1</spring.starter.web>
     </properties>
 
     <dependencies>
@@ -72,6 +73,12 @@
             <version>${spring.transaction}</version>
         </dependency>
 
+        <!-- Spring Boot Starter Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.starter.web}</version>
+        </dependency>
 
     </dependencies>
 
