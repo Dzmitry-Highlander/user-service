@@ -4,6 +4,7 @@ import by.aghanim.user_service.core.dto.UserCreateDTO;
 import by.aghanim.user_service.dao.api.IUserRepository;
 import by.aghanim.user_service.dao.entity.User;
 import by.aghanim.user_service.service.api.IUserService;
+import by.aghanim.user_service.service.exceptions.ItemNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
@@ -29,14 +30,14 @@ public class UserService implements IUserService {
     @Override
     public User findByMobileNumber(String mobileNumber) {
         return userRepository.findByMobileNumber(mobileNumber)
-                .orElseThrow(); //TODO new ItemNotFoundException(USER_NOT_FOUND_ERROR));
+                .orElseThrow(() -> new ItemNotFoundException(USER_NOT_FOUND_ERROR));
     }
 
     @Transactional
     @Override
     public void activate(@Valid UserCreateDTO userCreateDTO) {
         User user = userRepository.findByMobileNumber(userCreateDTO.getMobileNumber())
-                .orElseThrow(); //TODO new ItemNotFoundException(USER_NOT_FOUND_ERROR));
+                .orElseThrow(() -> new ItemNotFoundException(USER_NOT_FOUND_ERROR));
 
         //TODO user.setStatus(EUserStatus.ACTIVATED); add enum EUserStatus and refactor User entity
 
@@ -66,6 +67,6 @@ public class UserService implements IUserService {
     @Override
     public User read(UUID id) {
         return userRepository.findById(id)
-                .orElseThrow(); //TODO new ItemNotFoundException(USER_NOT_FOUND_ERROR));
+                .orElseThrow(() -> new ItemNotFoundException(USER_NOT_FOUND_ERROR));
     }
 }
