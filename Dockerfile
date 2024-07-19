@@ -1,5 +1,5 @@
 FROM eclipse-temurin:21
-MAINTAINER ITAcademy
+MAINTAINER Aghanim
 
 ADD ./target/user-service.jar /app/
 
