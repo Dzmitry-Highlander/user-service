@@ -1,4 +1,26 @@
 spring:
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://user_service_db:5432/users?ApplicationName=users-app
+    username: manager
+    password: manager
+    hikari:
+      maximum-pool-size: 6
+      minimum-idle: 3
+  freemarker:
+    check-template-location: false
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+
+server:
+  port: 8080
+
+jwt:
+  key: 1e9068186b10235bbd158a95e046e7a5edabf79725cacdfd48241d604fdeb3e4

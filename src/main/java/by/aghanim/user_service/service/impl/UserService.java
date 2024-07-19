@@ -5,6 +5,7 @@ import by.aghanim.user_service.dao.api.IUserRepository;
 import by.aghanim.user_service.dao.entity.User;
 import by.aghanim.user_service.service.api.IUserService;
 import by.aghanim.user_service.service.exceptions.ItemNotFoundException;
+import by.aghanim.user_service.service.exceptions.MobileNumberIsAlreadyTakenException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
@@ -49,7 +50,7 @@ public class UserService implements IUserService {
     public User create(UserCreateDTO item) {
         userRepository.findByMobileNumber(item.getMobileNumber())
                 .ifPresent(e -> {
-            //TODO throw new MobileNumberIsAlreadyTakenException(USER_EXISTS_ERROR);
+                    throw new MobileNumberIsAlreadyTakenException(USER_EXISTS_ERROR);
         });
 
         item.setPassword(passwordEncoder.encode(item.getPassword()));

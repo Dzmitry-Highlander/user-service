@@ -1,6 +1,7 @@
 package by.aghanim.user_service.config;
 
 import by.aghanim.user_service.service.converters.UserCreateDTOToUserConverter;
+import by.aghanim.user_service.service.converters.UserToUserDTOConverter;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
@@ -23,7 +24,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(new UserCreateDTOToUserConverter());
-        //TODO registry.addConverter(); many other Converters needed
+        registry.addConverter(new UserToUserDTOConverter());
+        //TODO many other Converters needed
     }
 
     @Override

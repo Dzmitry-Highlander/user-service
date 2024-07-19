@@ -28,22 +28,22 @@ public class UserController {
         var dtoList = new ArrayList<>();
 
         for (User userEntity : userService.read()) {
-            dtoList.add(conversionService.convert(userEntity, UserDTO.class)); //TODO UserToUserDTOConverter
+            dtoList.add(conversionService.convert(userEntity, UserDTO.class));
         }
 
         return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }
 
-    @GetMapping("/{uuid}")
+    @GetMapping("/{uuid}") //TODO refactor address to convention
     public ResponseEntity<?> get(@PathVariable("uuid") UUID uuid) {
-        var user = conversionService.convert(userService.read(uuid), UserDTO.class); //TODO UserToUserDTOConverter
+        var user = conversionService.convert(userService.read(uuid), UserDTO.class);
 
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<?> post(@Valid @RequestBody UserCreateDTO dto) {
-        var user = conversionService.convert(userService.create(dto), UserDTO.class); //TODO UserCreateToUserDTOConverter
+        var user = userService.read(userService.create(dto).getUuid());
 
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
